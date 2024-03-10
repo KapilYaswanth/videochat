@@ -4,7 +4,7 @@ import Peer from 'simple-peer';
 
 const SocketContext = createContext();
 
-const socket = io("http://localhost:5000")
+const socket = io("https://videochat-a4zf.onrender.com/")
 
 const ContextProvider = ({children}) => {
 
@@ -16,14 +16,14 @@ const ContextProvider = ({children}) => {
   const [name, setName] = useState('')
 
   const myVideo = useRef({});
-  const userVideo = useRef();
+  const userVideo = useRef({});
   const connectionRef = useRef();
 
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({video: true, audio: true}).then((currentStream) => {
       setStream(currentStream);
-      console.log('sss', currentStream);
       myVideo.current.srcObject = currentStream;
+      console.log('sss', currentStream);
     }).catch((err) => {
       alert(err, "turn on video and audio permission")
     })

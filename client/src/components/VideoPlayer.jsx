@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 const VideoPlayer = () => {
   const classes = useStyles();
   const {myVideo, userVideo, name, callAccepted, callEnded, stream, call} = useContext(SocketContext);
-  console.log('sss5', callAccepted, callEnded)
+  myVideo.current.srcObject = stream;
   return (
     <Grid container className={classes.gridContainer}>
       {stream && <Paper className={classes.paper}>
