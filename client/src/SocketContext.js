@@ -9,6 +9,7 @@ const socket = io("https://videochat-a4zf.onrender.com/")
 const ContextProvider = ({children}) => {
 
   const [stream, setStream] = useState(null);
+  const [istream, setIStream] = useState(null);
   const [me, setMe] = useState('');
   const [call, setCall] = useState({}); 
   const [callAccepted, setCallAccepted] = useState(false)
@@ -58,6 +59,7 @@ const ContextProvider = ({children}) => {
 
     peer.on('stream', (currentStream) => {
       console.log('sss6', currentStream)
+      setIStream(currentStream)
       userVideo.current.srcObject = currentStream
     })
 
@@ -109,6 +111,7 @@ const ContextProvider = ({children}) => {
   return (
     <SocketContext.Provider value={{
       stream,
+      istream,
       me,
       call,
       callAccepted,
